@@ -2,7 +2,7 @@
 
 Interactive documents powered by Markdown, React, and Observables
 
-Share state between JSX blocks in a MDX document
+Share state between JSX blocks in a [MDX](https://mdxjs.com/) document
 
 - **Declarative** React automatically updates observers when data changes
 - **Write with Markdown** store documents in plain text that can be revision-controlled
@@ -14,6 +14,7 @@ Share state between JSX blocks in a MDX document
 - [API](#api)
   - [Init](#init)
   - [Observe](#observe)
+- [Alternatives](#alternatives)
 - [Roadmap](#roadmap)
 - [Potential Issues](#potential-issues)
   - [Usage outside MDX](#usage-outside-mdx)
@@ -95,6 +96,17 @@ Props:
   }}
 </Observe>
 ```
+
+## Alternatives
+
+Advantages of MDX-Observable over [Jupyter](https://jupyter.org/) or [ObservableHQ](https://beta.observablehq.com/scratchpad):
+
+- No cells to run; entire document is live
+- Interactivity powered by predictable one-way data flow
+- Use standard JS imports and any React component
+- Produces static bundles
+- Edit using preferred JS tooling
+- Bundle with anything that supports [MDX](https://mdxjs.com/getting-started/), like Webpack, Gatsby, Parcel, etc.
 
 ## Roadmap
 
