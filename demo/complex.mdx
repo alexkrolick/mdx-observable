@@ -1,4 +1,4 @@
-import { Init, Observe } from '../src/index.js';
+import { State, Observe } from '../src/index.js';
 import Table from './helpers/table';
 import { Form } from 'react-powerplug';
 import { VictoryBar, VictoryChart, VictoryAxis, VictoryTheme } from 'victory';
@@ -13,8 +13,8 @@ There a number of factors to consider when buying a car. Use our special formula
 
 Here are some cars to get you started with your comparison:
 
-<Init
-  state={{
+<State
+  initialState={{
     vehicles: [
       { name: "Toyota", price: 29000, reliability: 8, luxury: 7 },
       { name: "Honda", price: 27000, reliability: 7, luxury: 6 },
@@ -24,15 +24,14 @@ Here are some cars to get you started with your comparison:
       { name: "BMW", price: 45000, reliability: 6, luxury: 10 }
     ]
   }}
-  key="complex-example"
-/>
+>
 
 <!--
 This is a table
 -->
 
 <Observe>
-  {({ state: {vehicles} }) => (
+  {({ vehicles }) => (
     <Table
       data={[Object.keys(vehicles[0]), ...vehicles.map(v => Object.values(v))]}
     />
@@ -45,7 +44,7 @@ Form to add a car
 -->
 
 <Observe>
-  {({ state: { vehicles }, setState }) => {
+  {({ vehicles, setState }) => {
     return (
       <Form initial={{ name: "", price: 0, reliability: 0, luxury: 0 }}>
         {({ input, values }) => (
@@ -93,7 +92,7 @@ Form to add a car
 
 <Observe>
   {
-    ({ state: { vehicles }, setState }) => {
+    ({ vehicles, setState }) => {
       const cheapest = [...vehicles].sort((a, b) => a.price - b.price)[0];
       const mostReliable = [...vehicles].sort(
         (a, b) => b.reliability - a.reliability
@@ -132,7 +131,7 @@ Form to add a car
 
 <Observe>
   {
-    ({ state: { vehicles }, setState }) => {
+    ({ vehicles, setState }) => {
       const specialFormula = ({ price, reliability, luxury }) =>
         (reliability * 3 + luxury * 2) / price;
       const byFormula = [...vehicles]
@@ -156,5 +155,7 @@ Form to add a car
     }
   }
 </Observe>
+
+</State>
 
 </article>

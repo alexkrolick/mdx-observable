@@ -1,4 +1,4 @@
-import { Init, Observe } from '../src/index';
+import { State, Observe } from '../src/index';
 import Table from './helpers/table';
 
 <link href="https://unpkg.com/github-markdown-css@2.10.0/github-markdown.css" rel="stylesheet" />
@@ -11,19 +11,18 @@ There a number of factors to consider when buying a car.
 
 Use our special formula to help you decide!
 
-<Init
-  state={{
+<State
+  initialState={{
     vehicles: [
       { name: "Volvo",  price: 29000, reliability: 7 },
       { name: "Honda",  price: 25000, reliability: 8 },
     ],
     revealChoice: false,
   }}
-  key="simple-example"
-/>
+>
 
 <Observe>
-  {({ state: {vehicles} }) => (
+  {({vehicles}) => (
     <Table
       data={[Object.keys(vehicles[0]), ...vehicles.map(v => Object.values(v))]}
     />
@@ -34,7 +33,7 @@ Which should you buy?
 
 <Observe>
   {
-    ({state: {vehicles, revealChoice}, setState}) => {
+    ({vehicles, revealChoice, setState}) => {
       const mostReliable = [...vehicles]
         .sort((a, b) => b.reliability - a.reliability)[0];
       const handleClick = e => {
@@ -52,5 +51,7 @@ Which should you buy?
     }
   }
 </Observe>
+
+</State>
 
 </article>
