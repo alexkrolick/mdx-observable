@@ -115,6 +115,8 @@ Advantages of MDX-Observable over [Jupyter](https://jupyter.org/) or [Observable
 
 ## Roadmap
 
+- [ ] See if `<Init />` could work as a wrapper instead of sibling of `<Observer />`. This would allow better scoping and safer setup/teardown.
+
 - [ ] Some way to define functions inline. This might map well to the concept of "selectors" from Redux. Currently you can work around this gap by defining utilities in external JS files, but this makes it hard to write self-contained notebooks.
 
 Possible API:
