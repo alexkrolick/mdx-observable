@@ -18,8 +18,10 @@ Here are some cars to get you started with your comparison:
     vehicles: [
       { name: "Toyota", price: 29000, reliability: 8, luxury: 7 },
       { name: "Honda", price: 27000, reliability: 7, luxury: 6 },
-      { name: "Volvo", price: 31000, reliability: 7, luxury: 8 },
-      { name: "Mercedes", price: 45000, reliability: 6, luxury: 10 }
+      { name: "Volvo", price: 36000, reliability: 7, luxury: 8 },
+      { name: "Jeep", price: 33000, reliability: 7, luxury: 6 },
+      { name: "Ford", price: 27000, reliability: 7, luxury: 5 },
+      { name: "BMW", price: 45000, reliability: 6, luxury: 10 }
     ]
   }}
   key="complex-example"
@@ -130,20 +132,25 @@ Form to add a car
 
 <Observe>
   {
-    ({ state, setState }) => {
+    ({ state: { vehicles }, setState }) => {
       const specialFormula = ({ price, reliability, luxury }) =>
         (reliability * 3 + luxury * 2) / price;
-      const byFormula = [...state.vehicles]
+      const byFormula = [...vehicles]
         .map(v => ({ ...v, score: specialFormula(v) }))
         .sort((a, b) => b.score - a.score)
-      return ( 
-        <VictoryChart domainPadding={20} theme={VictoryTheme.material}>
+        .map((v, i) => ({...v, fill: `#999`}))
+      return (
+        <VictoryChart
+          domainPadding={20}
+          theme={VictoryTheme.material}
+          height={250}
+        >
           <VictoryAxis
             dependentAxis
             tickFormat={(x) => (`${x * 1000}`)}
           />
           <VictoryAxis />
-          <VictoryBar data={byFormula} x="name" y="score" fill="blue" />
+          <VictoryBar data={byFormula} x="name" y="score" />
         </VictoryChart>
       )
     }
