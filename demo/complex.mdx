@@ -1,6 +1,7 @@
 import { Init, Observe } from '../src/index.js';
 import Table from './helpers/table';
 import { Form } from 'react-powerplug';
+import { VictoryBar, VictoryChart, VictoryAxis, VictoryTheme } from 'victory';
 
 <link href="https://unpkg.com/github-markdown-css@2.10.0/github-markdown.css" rel="stylesheet" />
 
@@ -121,6 +122,30 @@ Form to add a car
           </div>
         </div>
       );
+    }
+  }
+</Observe>
+
+## Scores
+
+<Observe>
+  {
+    ({ state, setState }) => {
+      const specialFormula = ({ price, reliability, luxury }) =>
+        (reliability * 3 + luxury * 2) / price;
+      const byFormula = [...state.vehicles]
+        .map(v => ({ ...v, score: specialFormula(v) }))
+        .sort((a, b) => b.score - a.score)
+      return ( 
+        <VictoryChart domainPadding={20} theme={VictoryTheme.material}>
+          <VictoryAxis
+            dependentAxis
+            tickFormat={(x) => (`${x * 1000}`)}
+          />
+          <VictoryAxis />
+          <VictoryBar data={byFormula} x="name" y="score" fill="blue" />
+        </VictoryChart>
+      )
     }
   }
 </Observe>

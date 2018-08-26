@@ -45,6 +45,7 @@
     "rollup-plugin-node-resolve": "^3.0.3",
     "rollup-plugin-replace": "^2.0.0",
     "rollup-plugin-uglify": "^3.0.0",
+    "victory": "^30.3.0",
     "watch-cli": "^0.2.2",
     "weak-key": "^1.0.1"
   },
