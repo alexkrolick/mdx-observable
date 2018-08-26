@@ -59,6 +59,8 @@ The button has been clicked:
 </Observe>
 ```
 
+Example with a form, table, and graph running in [OK-MDX](https://github.com/jxnblk/ok-mdx):
+
 <img width="1311" alt="screen shot 2018-08-25 at 11 33 32 pm" src="https://user-images.githubusercontent.com/1571667/44625478-a8dbd800-a8bf-11e8-8a27-4f56e89f40f2.png">
 
 
