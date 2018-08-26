@@ -1,5 +1,7 @@
 # MDX-Observable
 
+_**alpha project**, API may change significantly_
+
 Interactive documents powered by Markdown, React, and Observables
 
 Share state between JSX blocks in a [MDX](https://mdxjs.com/) document
