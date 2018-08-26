@@ -1,0 +1,56 @@
+import { Init, Observe } from '../src/index';
+import Table from './helpers/table';
+
+<link href="https://unpkg.com/github-markdown-css@2.10.0/github-markdown.css" rel="stylesheet" />
+
+<article className="markdown-body">
+
+# Which Car Should You Buy?
+
+There a number of factors to consider when buying a car.
+
+Use our special formula to help you decide!
+
+<Init
+  state={{
+    vehicles: [
+      { name: "Volvo",  price: 29000, reliability: 7 },
+      { name: "Honda",  price: 25000, reliability: 8 },
+    ],
+    revealChoice: false,
+  }}
+  key="simple-example"
+/>
+
+<Observe>
+  {({ state: {vehicles} }) => (
+    <Table
+      data={[Object.keys(vehicles[0]), ...vehicles.map(v => Object.values(v))]}
+    />
+  )}
+</Observe>
+
+Which should you buy?
+
+<Observe>
+  {
+    ({state: {vehicles, revealChoice}, setState}) => {
+      const mostReliable = [...vehicles]
+        .sort((a, b) => b.reliability - a.reliability)[0];
+      const handleClick = e => {
+        e.preventDefault();
+        setState(s => ({ ...s, revealChoice: !s.revealChoice }));
+      }
+      return (
+        <div>
+          <button onClick={handleClick}>Reveal Choice</button>
+          { revealChoice && <div>
+            You should buy the {mostReliable.name} because it is the most reliable
+          </div> } 
+        </div>
+      );
+    }
+  }
+</Observe>
+
+</article>

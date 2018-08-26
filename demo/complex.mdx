@@ -1,0 +1,128 @@
+import { Init, Observe } from '../src/index.js';
+import Table from './helpers/table';
+import { Form } from 'react-powerplug';
+
+<link href="https://unpkg.com/github-markdown-css@2.10.0/github-markdown.css" rel="stylesheet" />
+
+<article className="markdown-body">
+
+# Which Car Should You Buy?
+
+There a number of factors to consider when buying a car. Use our special formula to help you decide!
+
+Here are some cars to get you started with your comparison:
+
+<Init
+  state={{
+    vehicles: [
+      { name: "Toyota", price: 29000, reliability: 8, luxury: 7 },
+      { name: "Honda", price: 27000, reliability: 7, luxury: 6 },
+      { name: "Volvo", price: 31000, reliability: 7, luxury: 8 },
+      { name: "Mercedes", price: 45000, reliability: 6, luxury: 10 }
+    ]
+  }}
+  key="complex-example"
+/>
+
+<!--
+This is a table
+-->
+
+<Observe>
+  {({ state: {vehicles} }) => (
+    <Table
+      data={[Object.keys(vehicles[0]), ...vehicles.map(v => Object.values(v))]}
+    />
+  )}
+</Observe>
+
+
+<!--
+Form to add a car
+-->
+
+<Observe>
+  {({ state: { vehicles }, setState }) => {
+    return (
+      <Form initial={{ name: "", price: 0, reliability: 0, luxury: 0 }}>
+        {({ input, values }) => (
+          <form
+            onSubmit={e => {
+              e.preventDefault();
+              const newCar = {
+                name: values.name,
+                price: parseInt(values.price),
+                reliability: parseInt(values.reliability),
+                luxury: parseInt(values.luxury)
+              };
+              setState(s => ({ ...s, vehicles: [...s.vehicles, newCar] }));
+            }}
+          >
+            <input placeholder="Name" {...input("name").bind} type="text" />
+            <br />
+            <input
+              placeholder="Price"
+              {...input("price").bind}
+              type="number"
+            />
+            <br />
+            <input
+              placeholder="Reliability"
+              {...input("reliability").bind}
+              type="number"
+            />
+            <br />
+            <input
+              placeholder="Luxury"
+              {...input("luxury").bind}
+              type="number"
+            />
+            <br />
+            <button type="submit">Add Car</button>
+          </form>
+        )}
+      </Form>
+    );
+  }}
+</Observe>
+
+## Result
+
+<Observe>
+  {
+    ({ state: { vehicles }, setState }) => {
+      const cheapest = [...vehicles].sort((a, b) => a.price - b.price)[0];
+      const mostReliable = [...vehicles].sort(
+        (a, b) => b.reliability - a.reliability
+      )[0];
+      const mostLuxurious = [...vehicles].sort(
+        (a, b) => b.luxury - a.luxury
+      )[0];
+      const specialFormula = ({ price, reliability, luxury }) =>
+        (reliability * 3 + luxury * 2) / price;
+      const byFormula = [...vehicles]
+        .map(v => ({ ...v, score: specialFormula(v) }))
+        .sort((a, b) => b.score - a.score)[0];
+      return (
+        <div>
+          <div>
+            The cheapest car is: <b>{cheapest.name}</b>
+          </div>
+          <div>
+            The most reliable car is: <b>{mostReliable.name}</b>
+          </div>
+          <div>
+            The most luxurious car is: <b>{mostLuxurious.name}</b>
+          </div>
+          <div>
+            <i>
+              Our special formula says: <b>Buy {byFormula.name}</b>
+            </i>
+          </div>
+        </div>
+      );
+    }
+  }
+</Observe>
+
+</article>

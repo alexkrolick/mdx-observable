@@ -1,0 +1,22 @@
+import { Init, Observe } from '../src';
+
+# Counter
+
+<Init
+  state={{ count: 0 }}
+  key="counter-example"
+/>
+
+<Observe>
+  {({ setState }) => (
+    <button onClick={() => setState(s => ({ count: s.count + 1 }))}>
+      Click me
+    </button>
+  )}
+</Observe>
+
+The button has been clicked:
+
+<Observe>
+  { ({state}) => (<span>{state.count} times</span>) }
+</Observe>
