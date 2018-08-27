@@ -1,6 +1,6 @@
 {
   "name": "mdx-observable",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "Global state for MDX documents",
   "main": "index.js",
   "module": "es/index.js",
@@ -96,11 +96,8 @@
       "prettier/prettier": 2
     }
   },
-  "dependencies": {
-    "callbag-from-obs": "^1.2.0",
-    "callbag-observe": "^1.0.0"
-  },
+  "dependencies": {},
   "peerDependencies": {
-    "react": "15.x || 16.x"
+    "react": "^16.2"
   }
 }

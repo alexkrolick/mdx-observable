@@ -1,0 +1,32 @@
+import { State, Observe } from '../src';
+
+# Counter
+
+<State initialState={{ count: 0 }}>
+{({ setState, ...state }) => {
+// cannot leave blank lines here
+// but at least we can use JS variables because we are inside a function!
+const increment = 1;
+// no blank lines here either
+// you can use comments or a single ;
+return (
+// the body of the document can be put inside the render function
+// this has to be wrapped in a fragment if it has multiple nodes
+//
+// code inside the block cannot be indented >= 4 spaces or it will be
+// rendered as text instead of parsed
+<React.Fragment>
+
+# H1
+
+<button onClick={() => setState(s => ({ count: s.count + increment }))}>
+  Click me
+</button>
+
+The button has been clicked:
+
+<span>{state.count} times</span>
+
+</React.Fragment>
+)}}
+</State>

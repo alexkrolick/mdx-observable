@@ -2,10 +2,7 @@ import { Init, Observe } from '../src';
 
 # Counter
 
-<Init
-  state={{ count: 0 }}
-  key="counter-example"
-/>
+<Init initialState={{ count: 0 }}>
 
 <Observe>
   {({ setState }) => (
@@ -18,5 +15,7 @@ import { Init, Observe } from '../src';
 The button has been clicked:
 
 <Observe>
-  { ({state}) => (<span>{state.count} times</span>) }
+  { ({...state}) => (<span>{state.count} times</span>) }
 </Observe>
+
+</Init>
