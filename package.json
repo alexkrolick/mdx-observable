@@ -57,7 +57,7 @@
     "demo:parcel:dev": "parcel demo/index.html --open",
     "demo:parcel:build": "parcel build demo/index.html",
     "predemo:parcel:dev": "npm-run-all -s clean build",
-    "predemo:parcel:build": "npm-run-all -s clean build",
+    "predemo:parcel:build": "npm-run-all -s clean build demo:parcel:build",
     "netlify": "npm-run-all -s lint clean build build:redirects",
     "build": "node build/build.js",
     "build:redirects": "cp ./_redirects ./dist/",
