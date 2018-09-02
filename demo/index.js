@@ -19,6 +19,8 @@ const NavLink = props => (
   />
 );
 
+const NotFound = () => <p>404 - Not Found</p>;
+
 const Nav = () => (
   <nav>
     <NavLink to="/dataviz">Data Viz</NavLink> |{" "}
@@ -32,6 +34,7 @@ const Demo = (
   <React.Fragment>
     <Nav />
     <Router>
+      <NotFound default />
       <Redirect from="/" to="/dataviz" />
       <Counter path="/counter" />
       <CounterRender path="/counter-child-function" />
