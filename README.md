@@ -61,7 +61,7 @@ yarn run demo:parcel:dev
 The output files in `dist/` can be hosted on a static web server
 
 ```
-yarn run demo:parcel:build
+yarn run build:parcel
 ```
 
 ```jsx
