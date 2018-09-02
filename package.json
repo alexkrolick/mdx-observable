@@ -37,6 +37,7 @@
     "pretty-bytes": "^4.0.2",
     "react": "^16.4.2",
     "react-dom": "^16.4.2",
+    "react-katex": "^2.0.2",
     "react-powerplug": "^1.0.0-rc.1",
     "react-testing-library": "^5.0.0",
     "rollup": "^0.56.3",

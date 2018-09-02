@@ -2,15 +2,22 @@ import { State, Observe } from '../es';
 import Table from './helpers/table';
 import { Form } from 'react-powerplug';
 import { VictoryBar, VictoryChart, VictoryAxis, VictoryTheme } from 'victory';
+import 'katex/dist/katex.min.css';
+import { BlockMath, InlineMath } from 'react-katex';
+
 
 # Data Visualization
 
 _An example linking a dataset to a table, form, and dynamic values
- displayed in a text and chart_
+ displayed in a text and chart, plus some LateX math._
 
 # Which Car Should You Buy?
 
 There a number of factors to consider when buying a car. Use our special formula to help you decide!
+
+<BlockMath>{`
+  \\text{Score} = 100 \\times \\frac{(reliability \\times 3 + luxury \\times 2)}{price}`
+}</BlockMath>
 
 Here are some cars to get you started with your comparison:
 
@@ -89,7 +96,9 @@ Form to add a car
   }}
 </Observe>
 
-## Result
+## Results
+
+### Scores
 
 <Observe>
   {
@@ -102,7 +111,7 @@ Form to add a car
         (a, b) => b.luxury - a.luxury
       )[0];
       const specialFormula = ({ price, reliability, luxury }) =>
-        (reliability * 3 + luxury * 2) / price;
+        (reliability * 3 + luxury * 2) / price * 100;
       const byFormula = [...vehicles]
         .map(v => ({ ...v, score: specialFormula(v) }))
         .sort((a, b) => b.score - a.score)[0];
@@ -133,7 +142,7 @@ Form to add a car
   {
     ({ vehicles, setState }) => {
       const specialFormula = ({ price, reliability, luxury }) =>
-        (reliability * 3 + luxury * 2) / price;
+        (reliability * 3 + luxury * 2) / price * 100;
       const byFormula = [...vehicles]
         .map(v => ({ ...v, score: specialFormula(v) }))
         .sort((a, b) => b.score - a.score)
