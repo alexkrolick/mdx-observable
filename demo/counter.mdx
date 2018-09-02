@@ -1,8 +1,9 @@
-import { Init, Observe } from '../src';
+import { State, Observe } from '../es';
+import { Link } from "@reach/router";
 
 # Counter
 
-<Init initialState={{ count: 0 }}>
+<State initialState={{ count: 0 }}>
 
 <Observe>
   {({ setState }) => (
@@ -15,7 +16,7 @@ import { Init, Observe } from '../src';
 The button has been clicked:
 
 <Observe>
-  { ({...state}) => (<span>{state.count} times</span>) }
+  { ({...state}) => (`${state.count} times`) }
 </Observe>
 
-</Init>
+</State>

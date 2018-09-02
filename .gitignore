@@ -5,5 +5,6 @@
 /index.js
 /lib
 /compat
+/dist
 npm-debug.log*
 yarn-error.log*

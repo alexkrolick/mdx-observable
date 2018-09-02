@@ -1,3 +1,5 @@
 dist/
 lib/
 cache/
+es/
+/index.js

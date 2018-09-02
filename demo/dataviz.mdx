@@ -1,11 +1,12 @@
-import { State, Observe } from '../src/index.js';
+import { State, Observe } from '../es';
 import Table from './helpers/table';
 import { Form } from 'react-powerplug';
 import { VictoryBar, VictoryChart, VictoryAxis, VictoryTheme } from 'victory';
 
-<link href="https://unpkg.com/github-markdown-css@2.10.0/github-markdown.css" rel="stylesheet" />
+# Data Visualization
 
-<article className="markdown-body">
+_An example linking a dataset to a table, form, and dynamic values
+ displayed in a text and chart_
 
 # Which Car Should You Buy?
 
@@ -127,7 +128,6 @@ Form to add a car
   }
 </Observe>
 
-## Scores
 
 <Observe>
   {
@@ -139,23 +139,23 @@ Form to add a car
         .sort((a, b) => b.score - a.score)
         .map((v, i) => ({...v, fill: `#999`}))
       return (
-        <VictoryChart
-          domainPadding={20}
-          theme={VictoryTheme.material}
-          height={250}
-        >
-          <VictoryAxis
-            dependentAxis
-            tickFormat={(x) => (`${x * 1000}`)}
-          />
-          <VictoryAxis />
-          <VictoryBar data={byFormula} x="name" y="score" />
-        </VictoryChart>
+        <div style={{ maxWidth: 500 }}>
+          <VictoryChart
+            domainPadding={20}
+            theme={VictoryTheme.material}
+            height={250}
+          >
+            <VictoryAxis
+              dependentAxis
+              tickFormat={(x) => (`${x * 1000}`)}
+            />
+            <VictoryAxis />
+            <VictoryBar data={byFormula} x="name" y="score" />
+          </VictoryChart>
+        </div>
       )
     }
   }
 </Observe>
 
 </State>
-
-</article>

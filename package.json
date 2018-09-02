@@ -8,6 +8,7 @@
   "devDependencies": {
     "@mdx-js/parcel-plugin-mdx": "^0.15.0",
     "@mdx-js/tag": "^0.13.1-1",
+    "@reach/router": "^1.1.1",
     "babel-cli": "^6.26.0",
     "babel-core": "^6",
     "babel-eslint": "^8.2.2",
@@ -31,7 +32,6 @@
     "gzip-size": "^4.1.0",
     "jest": "^23.5.0",
     "npm-run-all": "^4.1.3",
-    "ok-mdx": "^1.0.0-7",
     "parcel-bundler": "^1.9.7",
     "prettier": "^1.14.2",
     "pretty-bytes": "^4.0.2",
@@ -50,10 +50,15 @@
     "weak-key": "^1.0.1"
   },
   "scripts": {
-    "demo": "mdx demo --open",
+    "demo:ok-mdx": "mdx demo --open",
+    "predemo:ok-mdx": "npm-run-all -s clean build",
+    "demo:parcel:dev": "parcel demo/index.html --open",
+    "demo:parcel:build": "parcel build demo/index.html",
+    "predemo:parcel:dev": "npm-run-all -s clean build",
+    "predemo:parcel:build": "npm-run-all -s clean build",
     "build": "node build/build.js",
     "watch": "watch -p \"src/**/*.js\" -c \"yarn build\"",
-    "clean": "rm -rf lib es umd index.js",
+    "clean": "rm -rf lib es umd dist index.js",
     "test": "jest",
     "fix:js": "eslint ./src --max-warnings=0 --fix",
     "fix:md:toc": "doctoc README.md --github",

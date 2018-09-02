@@ -15,6 +15,8 @@ Share state between JSX blocks in a [MDX](https://mdxjs.com/) document
 <!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
 
 - [Examples](#examples)
+  - [Dev Server](#dev-server)
+  - [Static Build](#static-build)
 - [API](#api)
   - [State](#state)
     - [Using render prop](#using-render-prop)
@@ -33,17 +35,32 @@ Share state between JSX blocks in a [MDX](https://mdxjs.com/) document
 
 ## Examples
 
+- [Counter w/Observer](./demo/counter.mdx)
+- [Counter w/Render Prop](./demo/counter-child-function.mdx)
+- [Toggle](./demo/toggle.mdx)
+- [Dataviz](./demo/dataviz.mdx)
+
 ```
 git clone git@github.com:alexkrolick/mdx-observable.git
 cd mdx-observable
 yarn install
-yarn run demo
 ```
 
-- [Counter w/Observer](./demo/counter.mdx)
-- [Counter w/Render Prop](./demo/counter-child-function.mdx)
-- [Simple Example](./demo/simple.mdx)
-- [Complex Example](./demo/complex.mdx)
+### Dev Server
+
+Start the dev server with live reloading
+
+```sh
+yarn run demo:parcel:dev
+```
+
+### Static Build
+
+The output files in `dist/` can be hosted on a static web server
+
+```
+yarn run demo:parcel:build
+```
 
 ```jsx
 // notebook.mdx
@@ -92,8 +109,7 @@ Props:
 _Very similar to [React Powerplug's State](https://github.com/renatorib/react-powerplug/blob/master/docs/components/State.md)_
 
 _Note: whitespace is sensitive in MDX,
-so the awkward spacing below is important.
-This PR may make this easier: https://github.com/mdx-js/mdx/pull/226_
+so the awkward spacing below is important._
 
 ```mdx
 <State initialState={{}}>
@@ -197,7 +213,7 @@ Possible API:
 
 ### Usage outside MDX
 
-~~Technically `mdx-observable` doesn't depend on MDX for anything, but since it uses a singleton for a cache, it is not a good fit for state management in an app.~~
+~~Technically `mdx-observable` doesn't depend on MDX for anything, but since it uses a singleton for a cache, it is not a good fit for state management in an app.~~ Fixed
 
 ### Warning about blank lines in JSX
 

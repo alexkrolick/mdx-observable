@@ -1,0 +1,4 @@
+{
+  "presets": ["env", "react-app/prod"],
+  "plugins": ["transform-class-properties"]
+}
