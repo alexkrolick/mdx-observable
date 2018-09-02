@@ -19,7 +19,12 @@ const NavLink = props => (
   />
 );
 
-const NotFound = () => <p>404 - Not Found</p>;
+const NotFound = () => (
+  <div>
+    <p>404 - Not Found</p>
+    <Link to="/">Go Home</Link>
+  </div>
+);
 
 const Nav = () => (
   <nav>
