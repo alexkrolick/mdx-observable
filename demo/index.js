@@ -28,6 +28,9 @@ const NotFound = () => (
 
 const Nav = () => (
   <nav>
+    <span style={{ float: "right" }}>
+      <a href="https://github.com/alexkrolick/mdx-observable">GitHub</a>
+    </span>
     <NavLink to="/dataviz">Data Viz</NavLink> |{" "}
     <NavLink to="/toggle">Toggle</NavLink> |{" "}
     <NavLink to="/counter">Counter</NavLink> |{" "}
