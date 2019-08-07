@@ -66,7 +66,7 @@ yarn run build:parcel
 
 ```jsx
 // notebook.mdx
-import { Init, Observe } from 'mdx-observable';
+import { State, Observe } from 'mdx-observable';
 
 # Counter
 
