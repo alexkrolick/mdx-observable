@@ -35,7 +35,7 @@ Share state between JSX blocks in a [MDX](https://mdxjs.com/) document
 
 ## Examples
 
-See demos: https://mdx-observable.netlify.com/
+See demos: https://mdx-observable.netlify.app/
 
 - [Counter w/Observer](./demo/counter.mdx)
 - [Counter w/Render Prop](./demo/counter-child-function.mdx)
